@@ -80,6 +80,9 @@ int DIGRAPHoutdeg(Digraph G, Vertex v){
 }
 
 
+
+  
+
 /*A função recebe um Digrafo G e um vértice v e devolve o grau de saída
 do vértice v no inteiro grau*/
 int DIGRAPHindeg(Digraph G, Vertex v){
@@ -97,6 +100,7 @@ int DIGRAPHequal(Digraph G1, Digraph G2){
   Vertex v, w;
 
   if (G1->V != G2->V)
+
     return 0;
 
   if (G1->A != G2->A)
@@ -109,3 +113,32 @@ int DIGRAPHequal(Digraph G1, Digraph G2){
 
   return 1;
 }
+
+//Funcao retorna 1 se existe caminho de s a t e ) caso contrário
+#define maxV 10000
+
+static int lbl[maxV];
+
+int DIGRAPHpath(Digraph G, Vertex s, Vertex t) {
+  Vertex v;
+  for (v = 0; v < G->V; v++)
+    lbl[v] = -1;
+
+  pathR(G,s);
+
+  if (lbl[t] == -1) return 0;
+
+  return 1;
+
+}
+
+void pathR(Digraph G, Vertex v) {
+  Vertex w;
+  lbl[v] = 0;
+  for (w = 0; w < G->V; w++)
+    if(G->adj[v][w] == 1)
+      if (lbl[w] == -1)
+        pathR(G, w);       
+
+}
+
