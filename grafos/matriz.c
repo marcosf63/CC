@@ -8,6 +8,7 @@ typedef struct{
 
 Arc ARC(Vertex v, Vertex w){
   Arc e;
+
   e.v = v;
   e.w = w;
 
@@ -114,13 +115,15 @@ int DIGRAPHequal(Digraph G1, Digraph G2){
   return 1;
 }
 
-//Funcao retorna 1 se existe caminho de s a t e ) caso contrário
+//Funcao retorna size(tamanho do caminho) se existe caminho de s a t e caso contrário retorna 0
 #define maxV 10000
 
 static int lbl[maxV];
+static int size = 0;
 
 int DIGRAPHpath(Digraph G, Vertex s, Vertex t) {
   Vertex v;
+  
   for (v = 0; v < G->V; v++)
     lbl[v] = -1;
 
@@ -128,7 +131,7 @@ int DIGRAPHpath(Digraph G, Vertex s, Vertex t) {
 
   if (lbl[t] == -1) return 0;
 
-  return 1;
+  return size;
 
 }
 
@@ -137,8 +140,10 @@ void pathR(Digraph G, Vertex v) {
   lbl[v] = 0;
   for (w = 0; w < G->V; w++)
     if(G->adj[v][w] == 1)
-      if (lbl[w] == -1)
-        pathR(G, w);       
-
+      if (lbl[w] == -1) {
+        size++;
+        pathR(G, w);   
+      } else 
+         size--;
 }
 
