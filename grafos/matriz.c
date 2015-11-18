@@ -138,12 +138,12 @@ int DIGRAPHpath(Digraph G, Vertex s, Vertex t) {
 void pathR(Digraph G, Vertex v) {
   Vertex w;
   lbl[v] = 0;
+  size++;
   for (w = 0; w < G->V; w++)
     if(G->adj[v][w] == 1)
       if (lbl[w] == -1) {
-        size++;
         pathR(G, w);   
-      } else 
+      } 
+      else 
          size--;
 }
-

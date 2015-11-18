@@ -19,8 +19,8 @@ int main(){
   
   DIGRAPHshow(G); 
 
-  if (DIGRAPHpath(G, 2, 0))
-    printf("EXISTE CAMINHO = %d\n", DIGRAPHpath(G, 2, 0));
+  if (DIGRAPHpath(G, 0, 4))
+    printf("EXISTE CAMINHO = %d\n", DIGRAPHpath(G, 0, 4));
   else
     printf("NAO EXISTE CAMINHO\n");
 
