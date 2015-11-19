@@ -50,5 +50,10 @@ int main(){
   else
     printf("DIFERENTES\n");
 
+  if (DIGRAPHpath(G2, 0, 1))
+    printf("EXISTE CAMINHO\n");
+  else
+    printf("NAO EXISTE CAMINHO\n");
+
   return 0;
 }
