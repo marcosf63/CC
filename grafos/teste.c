@@ -18,11 +18,13 @@ int main(){
   DIGRAPHinsertA(G, 4, 3);
   
   DIGRAPHshow(G); 
-
-  if (DIGRAPHpath(G, 0, 4))
-    printf("EXISTE CAMINHO = %d\n", DIGRAPHpath(G, 0, 4));
+  int existe = DIGRAPHpath(G, 0, 1);
+  if (existe)
+    printf("EXISTE CAMINHO\n");
   else
     printf("NAO EXISTE CAMINHO\n");
+
+  imprimeCaminhoAoContrario(G, 0, 4);
 
   return 0;
 }

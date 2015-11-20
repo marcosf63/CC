@@ -9,4 +9,4 @@ int DIGRAPHindeg(Digraph G, Vertex v);
 int DIGRAPHequal(Digraph G1, Digraph G2);
 int DIGRAPHpath(Digraph G, Vertex s, Vertex t);
 void pathR(Digraph G, Vertex v);
-
+void imprimeCaminhoAoContrario(Digraph G, Vertex s, Vertex t);

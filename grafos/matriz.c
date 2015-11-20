@@ -119,7 +119,7 @@ int DIGRAPHequal(Digraph G1, Digraph G2){
 #define maxV 10000
 
 static int lbl[maxV];
-static int size = 0;
+static Vertex parent[maxV];
 
 int DIGRAPHpath(Digraph G, Vertex s, Vertex t) {
   Vertex v;
@@ -131,19 +131,25 @@ int DIGRAPHpath(Digraph G, Vertex s, Vertex t) {
 
   if (lbl[t] == -1) return 0;
 
-  return size;
+  return 1;
 
 }
 
 void pathR(Digraph G, Vertex v) {
   Vertex w;
   lbl[v] = 0;
-  size++;
   for (w = 0; w < G->V; w++)
-    if(G->adj[v][w] == 1)
-      if (lbl[w] == -1) {
-        pathR(G, w);   
-      } 
-      else 
-         size--;
+    if(G->adj[v][w] == 1 && lbl[w] == -1) {
+      parent[w] = v;
+      pathR(G, w);
+    }  
+   
+}
+
+void imprimeCaminhoAoContrario (Digraph G, Vertex s, Vertex t) {
+  Vertex w;
+  for (w = t; w != s; w = parent[w])
+    printf("%d-", w);
+
+  printf("%d\n", s);
 }
