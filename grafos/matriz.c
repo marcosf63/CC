@@ -1,7 +1,6 @@
 #define Vertex int
 
 typedef struct{
-
   Vertex v;
   Vertex w;
 } Arc;
@@ -84,7 +83,7 @@ int DIGRAPHoutdeg(Digraph G, Vertex v){
 
   
 
-/*A função recebe um Digrafo G e um vértice v e devolve o grau de saída
+/*A função recebe um Digrafo G e um vértice v e devolve o grau de entrada
 do vértice v no inteiro grau*/
 int DIGRAPHindeg(Digraph G, Vertex v){
   Vertex w;
@@ -148,8 +147,31 @@ void pathR(Digraph G, Vertex v) {
 
 void imprimeCaminhoAoContrario (Digraph G, Vertex s, Vertex t) {
   Vertex w;
+  
+  DIGRAPHpath(G, s, t);
+     
   for (w = t; w != s; w = parent[w])
     printf("%d-", w);
 
   printf("%d\n", s);
+}
+
+void imprimeCaminho (Digraph G, Vertex s, Vertex t) {
+  Vertex w;
+  int *v, size, i;
+ 
+  DIGRAPHpath(G, s, t);
+     
+  for (w = t, size = 0; w != s; w = parent[w]){
+    size++;
+  }
+  
+  v = malloc(size * sizeof(int)); 
+  v[i] = s;
+
+  for ( i = size, size = 0; w != s; w = parent[w]){
+    size;
+  }
+
+  
 }
