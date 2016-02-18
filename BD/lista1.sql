@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Instrutor (
   escritorio VARCHAR(30),
   fone VARCHAR(15),
 
-  CHECK (sessao in ('Centra', 'Vendas', 'Comercial')),
+  CHECK (secao in ('Centra', 'Vendas', 'Comercial')),
   PRIMARY KEY (codigo)  
 );
 
